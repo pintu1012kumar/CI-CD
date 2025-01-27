@@ -28,3 +28,17 @@ jobs:
 
     - name: Verify Pushed Image
       run: docker pull pintu1012kumar/ci-cd:latest  # Replace with your Docker Hub username and repository
+
+
+
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          sudo docker pull pintu1012kumar/ci-cd:latest
+          sudo docker stop ci-cd || true
+          sudo docker rm ci-cd || true
+          sudo docker run -d --name ci-cd -p 3005:3000 pintu1012kumar/ci-cd:latest
