@@ -22,3 +22,5 @@ docker run  -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres
 -  not add something just try.
 -  not add something just try.
 -  not add something just try.
+
+- ssh -i c:\Users\pintu\Downloads\pintu-password.pem ubuntu@52.204.232.176
